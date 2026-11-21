@@ -279,38 +279,102 @@
       </ol>`;
   }
 
+  /* Código de barras falso pero siempre igual para el mismo folio */
+  function codigoBarras(texto, vertical = false) {
+    let x = 0, barras = "";
+    const anchoDe = n => (n % 3) + 1;               // barras de 1, 2 o 3 unidades
+    const bits = [3, 1, 1, ...[...texto].flatMap(c => {
+      const n = c.charCodeAt(0);
+      return [n, n >> 1, n >> 2, n >> 3, n >> 4, n * 7, n * 3, n >> 5];
+    }), 1, 1, 3];
+    bits.forEach((n, i) => {
+      const w = anchoDe(n);
+      if (i % 2 === 0) barras += vertical
+        ? `<rect x="0" y="${x}" width="40" height="${w}"/>`
+        : `<rect x="${x}" y="0" width="${w}" height="40"/>`;
+      x += w;
+    });
+    const caja = vertical ? `viewBox="0 0 40 ${x}" class="barcode barcode--v"` : `viewBox="0 0 ${x} 40" class="barcode"`;
+    return `<svg ${caja} preserveAspectRatio="none" aria-hidden="true">${barras}</svg>`;
+  }
+
   function mostrarTicket(pedido) {
     const t = $("#ticket");
-    const pintar = () => {
-      t.innerHTML = `
-        <div class="modal__head">
-          <h2>¡Pedido enviado!</h2>
-          <button type="button" class="icon-btn" data-close-modal aria-label="Cerrar">✕</button>
+    const fecha = new Date(pedido.creado);
+    const dia = fecha.toLocaleDateString("es-MX", { day: "2-digit", month: "short" }).replace(".", "").toUpperCase();
+    const fechaCorta = fecha.toLocaleDateString("es-MX", { day: "2-digit", month: "2-digit", year: "2-digit" });
+    const hora = fecha.toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" });
+    const piezas = pedido.productos.reduce((s, l) => s + l.cantidad, 0);
+    const listo = () => Store.orderStatus(pedido).id === "listo";
+
+    t.innerHTML = `
+      <div class="tk">
+        <div class="tk__main">
+          <div class="tk__top">
+            <div>
+              <span class="tk__brand">Vita café</span>
+              <span class="tk__kicker">Pedido en línea</span>
+            </div>
+            <div class="tk__vcode">
+              ${codigoBarras(pedido.id + pedido.creado, true)}
+              <span>${pedido.id.replace("-", "")}${fecha.getTime().toString().slice(-4)}</span>
+            </div>
+          </div>
+
+          <div class="tk__headline">
+            <h2>¡Pedido<br>enviado!</h2>
+            <span class="tk__day">${dia}</span>
+          </div>
+          <p class="tk__motto">Energía natural · Ingredientes frescos · Sin filas</p>
+
+          <div class="tk__folio"><small>Folio</small>${pedido.id}</div>
+
+          <ul class="tk__items">
+            ${pedido.productos.map(l => `
+              <li>
+                <span>${l.cantidad}× ${esc(l.nombre)}${l.opciones.length ? `<small>${l.opciones.map(o => esc(o.valor)).join(" · ")}</small>` : ""}</span>
+                <i></i>
+                <b>${fmt(l.precioUnitario * l.cantidad)}</b>
+              </li>`).join("")}
+          </ul>
+          <div class="tk__total"><span>Total</span><strong>${fmt(pedido.total)}</strong></div>
+
+          ${stepper(pedido)}
+
+          <dl class="tk__data">
+            <div><dt>cliente</dt><dd>${esc(pedido.cliente)}</dd></div>
+            <div><dt>fecha</dt><dd>${fechaCorta} · ${hora}</dd></div>
+            <div><dt>servicio</dt><dd>${esc(pedido.modalidad)}</dd></div>
+            <div><dt>recoger</dt><dd>${esc(pedido.horaRecogida)}</dd></div>
+            <div><dt>pago</dt><dd>${esc(pedido.pago)}</dd></div>
+            <div><dt>piezas</dt><dd>${piezas}</dd></div>
+          </dl>
+
+          <div class="tk__stamp ${listo() ? "is-on" : ""}" aria-hidden="true">¡Listo!</div>
         </div>
-        <div class="ticket__folio">
-          <span>Tu folio</span>
-          <strong>${pedido.id}</strong>
-          <small>A nombre de ${esc(pedido.cliente)} · ${esc(pedido.modalidad)} · ${esc(pedido.horaRecogida)}</small>
+
+        <div class="tk__stub">
+          <div class="tk__thanks"><span>¡Gracias!</span></div>
+          ${codigoBarras(pedido.id + pedido.creado.slice(11, 19))}
+          <p class="tk__note">${pedido.id} · Muestra este ticket en caja</p>
         </div>
-        ${stepper(pedido)}
-        <div class="summary">
-          ${pedido.productos.map(l => `<div><span>${l.cantidad}× ${esc(l.nombre)}</span><span>${fmt(l.precioUnitario * l.cantidad)}</span></div>`).join("")}
-          <div class="summary__total"><span>Total (${esc(pedido.pago)})</span><span>${fmt(pedido.total)}</span></div>
-        </div>
-        <div class="ticket__actions">
-          <button class="btn btn--ghost-dark" data-descargar>Descargar ticket (.json)</button>
-          <button class="btn btn--primary" data-close-modal>Listo</button>
-        </div>`;
-      $("[data-descargar]", t).onclick = () => descargarJSON(pedido);
-    };
-    pintar();
+      </div>
+
+      <div class="tk-actions">
+        <button class="btn btn--ghost-light" data-descargar>Descargar ticket</button>
+        <button class="btn btn--primary" data-close-modal>Listo</button>
+      </div>`;
+    $("[data-descargar]", t).onclick = () => descargarJSON(pedido);
+
     clearInterval(timerTicket);
     timerTicket = setInterval(() => {
       if (!$("#modal-ticket").open) return clearInterval(timerTicket);
       const s = $(".stepper", t);
       if (s && Number(s.dataset.paso) !== Store.orderStatus(pedido).paso) s.outerHTML = stepper(pedido);
+      if (listo()) $(".tk__stamp", t).classList.add("is-on");
     }, 1000);
     $("#modal-ticket").showModal();
+    $("#modal-ticket").scrollTop = 0;
   }
 
   function descargarJSON(pedido) {
