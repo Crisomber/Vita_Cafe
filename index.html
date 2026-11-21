@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vita Café</title>
+  <meta name="description" content="Vita Café: alimentos y bebidas saludables para estudiantes universitarios. Ordena en línea y recoge sin filas.">
+  <link rel="icon" href="img/logo-icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="navbar" id="navbar">
+    <a href="#inicio" class="navbar__brand" aria-label="Vita Café, ir al inicio">
+      <img src="img/logo-icono.png" alt="" width="40" height="40">
+      <span>Vita <em>café</em></span>
+    </a>
+
+    <nav class="navbar__menu" id="menu-principal" aria-label="Principal">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#menu" class="nav-link">Nuestro menú</a>
+      <a href="#conoceme" class="nav-link">Conóceme</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="icon-btn" id="btn-pedidos" aria-label="Mis pedidos" title="Mis pedidos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10M9 12h10M9 19h10M4 5h.01M4 12h.01M4 19h.01"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="btn-carrito" aria-label="Abrir carrito" title="Carrito">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="icon-btn navbar__toggle" id="btn-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ INICIO ============ -->
+    <section id="inicio" class="section hero">
+      <div class="hero__bg" data-parallax="0.35" style="background-image:url('img/hero.jpg')"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__card" data-anim="zoom-in">
+          <span class="hero__line hero__line--v1"></span>
+          <span class="hero__line hero__line--v2"></span>
+          <img src="img/logo.png" alt="Vita Café" class="hero__logo" width="500" height="500">
+        </div>
+        <div class="hero__text" data-anim="fade-up" data-delay="300">
+          <p class="hero__tagline">Energía natural para tu día universitario</p>
+          <div class="hero__cta">
+            <a href="#menu" class="btn btn--primary">Ordenar ahora</a>
+            <a href="#conoceme" class="btn btn--ghost">Conóceme</a>
+          </div>
+        </div>
+      </div>
+      <a href="#bienvenida" class="hero__scroll" aria-label="Bajar"><span></span></a>
+    </section>
+
+    <!-- Bienvenida -->
+    <section id="bienvenida" class="section welcome">
+      <div class="container welcome__grid">
+        <div class="welcome__title block-green" data-anim="fade-right">
+          <h2>Bienvenidos a nuestra cafetería</h2>
+        </div>
+        <div class="welcome__text" data-anim="fade-left" data-delay="150">
+          <p>En <strong>Víta café</strong> sabemos que tu día a día universitario exige máxima energía y enfoque.</p>
+          <p>Te ofrecemos opciones saludables, deliciosas y nutritivas pensadas para acompañar tus horas de estudio y recargar tus baterías de forma natural.</p>
+        </div>
+        <div class="welcome__img img-reveal" data-anim="reveal">
+          <img src="img/bienvenida.jpg" alt="Desayuno con avena, fruta fresca y jugo de naranja" loading="lazy">
+        </div>
+      </div>
+      <div class="beans beans--left" aria-hidden="true"></div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section services">
+      <div class="container services__grid">
+        <div class="services__text">
+          <p data-anim="fade-up">En Vita Café ofrecemos alimentos y bebidas saludables elaborados con ingredientes frescos y de calidad.</p>
+          <p data-anim="fade-up" data-delay="120">Brindamos un servicio rápido pensado para estudiantes con poco tiempo, incluyendo opciones para llevar y la posibilidad de personalizar los productos según sus gustos. Además, contamos con un ambiente cómodo y agradable para consumir o estudiar, junto con atención ágil que hace más práctica y agradable la experiencia del cliente.</p>
+          <ul class="features" data-stagger>
+            <li data-anim="fade-up"><span>🌿</span>Ingredientes frescos</li>
+            <li data-anim="fade-up"><span>⚡</span>Servicio rápido</li>
+            <li data-anim="fade-up"><span>🥤</span>Para llevar</li>
+            <li data-anim="fade-up"><span>✏️</span>Personalizable</li>
+          </ul>
+        </div>
+        <div class="services__media">
+          <img src="img/servicios-1.jpg" alt="Café con croissant y fruta" class="services__img services__img--a" data-anim="fade-left" loading="lazy">
+          <img src="img/servicios-2.jpg" alt="Mesa con platillos saludables" class="services__img services__img--b" data-anim="fade-up" data-delay="200" loading="lazy">
+          <div class="services__title block-green" data-anim="zoom-in" data-delay="350">
+            <h2>Nuestros servicios</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MENÚ ============ -->
+    <section id="menu" class="section menu">
+      <div class="container">
+        <div class="menu__head">
+          <div class="block-green menu__title" data-anim="fade-right">
+            <h2>Nuestro menú</h2>
+          </div>
+          <p class="menu__intro" data-anim="fade-left">Elige una categoría, personaliza tu producto y agrégalo al carrito. Pasas a recoger sin hacer fila.</p>
+        </div>
+
+        <!-- Tarjetas de categoría (como en el diseño) que también filtran -->
+        <div class="categories" role="tablist" aria-label="Categorías del menú" id="categorias"></div>
+
+        <!-- Productos (se generan con JS desde data/menu.json) -->
+        <div class="products" id="productos" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ CONÓCEME ============ -->
+    <section id="conoceme" class="section about">
+      <div class="container">
+        <header class="about__head" data-anim="fade-up">
+          <span class="eyebrow">Conóceme</span>
+          <h2 class="title-dark">Quiénes somos</h2>
+        </header>
+
+        <article class="about__row">
+          <div class="about__img img-reveal" data-anim="reveal">
+            <img src="img/vision.jpg" alt="Bowl saludable con garbanzos y aguacate" loading="lazy">
+          </div>
+          <div class="about__card">
+            <div class="block-green about__label" data-anim="fade-left"><h3>Nuestra visión</h3></div>
+            <p data-anim="fade-up" data-delay="150">Ser la cafetería universitaria de referencia en alimentación saludable, reconocida por acompañar a cada estudiante en su rendimiento diario con productos frescos, accesibles y hechos con cariño.</p>
+          </div>
+        </article>
+
+        <article class="about__row about__row--reverse">
+          <div class="about__img img-reveal" data-anim="reveal">
+            <img src="img/mision.jpg" alt="Desayuno con pan integral, huevo y aguacate" loading="lazy">
+          </div>
+          <div class="about__card">
+            <div class="block-green about__label" data-anim="fade-right"><h3>Nuestra misión</h3></div>
+            <p data-anim="fade-up" data-delay="150">Ofrecer alimentos y bebidas nutritivas, preparados al momento con ingredientes de calidad, en un servicio rápido y un espacio cómodo para comer, convivir y estudiar.</p>
+          </div>
+        </article>
+
+        <div class="counters" data-stagger>
+          <div class="counter" data-anim="fade-up"><strong data-count="18">0</strong><span>productos saludables</span></div>
+          <div class="counter" data-anim="fade-up"><strong data-count="5" data-suffix=" min">0</strong><span>tiempo promedio</span></div>
+          <div class="counter" data-anim="fade-up"><strong data-count="100" data-suffix="%">0</strong><span>ingredientes frescos</span></div>
+        </div>
+
+        <div class="gallery" data-stagger>
+          <img src="img/barista-1.jpg" alt="Barista preparando espresso" data-anim="zoom-in" loading="lazy">
+          <img src="img/barista-2.jpg" alt="Café de filtro" data-anim="zoom-in" loading="lazy">
+          <img src="img/iced.jpg" alt="Cafés helados" data-anim="zoom-in" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="section contact">
+      <div class="contact__bg" data-parallax="0.2" style="background-image:url('img/contacto.jpg')"></div>
+      <div class="contact__overlay"></div>
+      <div class="container contact__inner">
+        <div class="contact__card" data-anim="fade-up">
+          <h2>Contacto</h2>
+          <ul class="contact__list" data-stagger>
+            <li data-anim="fade-right"><span>Teléfono</span><a href="tel:1234567890">123-456-7890</a></li>
+            <li data-anim="fade-right"><span>Correo</span><a href="mailto:vitacafeteria@gmail.com">vitacafeteria@gmail.com</a></li>
+            <li data-anim="fade-right"><span>Redes sociales</span>@vitacafeteria</li>
+            <li data-anim="fade-right"><span>Horario</span>Lunes a viernes, 9:00 a 18:00 h</li>
+          </ul>
+          <a href="#menu" class="btn btn--primary" data-anim="fade-up">Haz tu pedido</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="anio"></span> Vita Café · Proyecto escolar</p>
+    <a href="#inicio" class="footer__top">Volver arriba ↑</a>
+  </footer>
+
+  <!-- ============ CARRITO (panel lateral) ============ -->
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <aside class="drawer" id="carrito" aria-label="Carrito" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Tu pedido</h2>
+      <button class="icon-btn" data-close aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="drawer__body" id="cart-items"></div>
+    <div class="drawer__foot">
+      <div class="total-row"><span>Total</span><strong id="cart-total">$0.00</strong></div>
+      <button class="btn btn--primary btn--block" id="btn-checkout" disabled>Continuar</button>
+    </div>
+  </aside>
+
+  <!-- Historial de pedidos -->
+  <aside class="drawer" id="pedidos" aria-label="Mis pedidos" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Mis pedidos</h2>
+      <button class="icon-btn" data-close aria-label="Cerrar">✕</button>
+    </div>
+    <div class="drawer__body" id="orders-list"></div>
+    <div class="drawer__foot">
+      <button class="btn btn--ghost-dark btn--block" id="btn-borrar-historial">Borrar historial</button>
+    </div>
+  </aside>
+
+  <!-- ============ MODALES ============ -->
+  <!-- Personalizar producto -->
+  <dialog class="modal" id="modal-producto">
+    <form method="dialog" class="modal__inner" id="form-producto"></form>
+  </dialog>
+
+  <!-- Checkout -->
+  <dialog class="modal" id="modal-checkout">
+    <form class="modal__inner" id="form-checkout" novalidate>
+      <div class="modal__head">
+        <h2>Confirmar pedido</h2>
+        <button type="button" class="icon-btn" data-close-modal aria-label="Cerrar">✕</button>
+      </div>
+      <label class="field">Nombre
+        <input name="cliente" required maxlength="40" placeholder="¿A nombre de quién?" autocomplete="given-name">
+      </label>
+      <label class="field">Matrícula (opcional)
+        <input name="matricula" maxlength="15" placeholder="Ej. A01234567">
+      </label>
+      <fieldset class="field">
+        <legend>¿Cómo lo quieres?</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="modalidad" value="Para llevar" checked><span>Para llevar</span></label>
+          <label class="chip"><input type="radio" name="modalidad" value="Comer aquí"><span>Comer aquí</span></label>
+        </div>
+      </fieldset>
+      <label class="field">Hora de recogida
+        <select name="hora" id="select-hora"></select>
+      </label>
+      <fieldset class="field">
+        <legend>Pago</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="pago" value="Efectivo en caja" checked><span>Efectivo en caja</span></label>
+          <label class="chip"><input type="radio" name="pago" value="Tarjeta en caja"><span>Tarjeta en caja</span></label>
+        </div>
+      </fieldset>
+      <div class="summary" id="checkout-summary"></div>
+      <p class="hint">Simulación: no se cobra nada ni se envía a ningún servidor. El pedido se guarda en tu navegador.</p>
+      <button class="btn btn--primary btn--block" type="submit">Enviar pedido</button>
+    </form>
+  </dialog>
+
+  <!-- Ticket -->
+  <dialog class="modal" id="modal-ticket">
+    <div class="modal__inner ticket" id="ticket"></div>
+  </dialog>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

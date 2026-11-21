@@ -1,0 +1,376 @@
+{
+  "moneda": "MXN",
+  "categorias": [
+    {
+      "id": "bebidas",
+      "nombre": "Bebidas",
+      "imagen": "img/bebidas.jpg"
+    },
+    {
+      "id": "snacks",
+      "nombre": "Snacks",
+      "imagen": "img/snacks.jpg"
+    },
+    {
+      "id": "desayunos",
+      "nombre": "Desayunos integrales",
+      "imagen": "img/desayunos.jpg"
+    }
+  ],
+  "opciones": {
+    "tamano": {
+      "nombre": "Tamaño",
+      "tipo": "uno",
+      "valores": [
+        {
+          "id": "ch",
+          "nombre": "Chico (12 oz)",
+          "extra": 0
+        },
+        {
+          "id": "gr",
+          "nombre": "Grande (16 oz)",
+          "extra": 10
+        }
+      ]
+    },
+    "leche": {
+      "nombre": "Leche",
+      "tipo": "uno",
+      "valores": [
+        {
+          "id": "entera",
+          "nombre": "Entera",
+          "extra": 0
+        },
+        {
+          "id": "deslac",
+          "nombre": "Deslactosada",
+          "extra": 0
+        },
+        {
+          "id": "almendra",
+          "nombre": "Almendra",
+          "extra": 8
+        },
+        {
+          "id": "avena",
+          "nombre": "Avena",
+          "extra": 8
+        }
+      ]
+    },
+    "endulzante": {
+      "nombre": "Endulzante",
+      "tipo": "uno",
+      "valores": [
+        {
+          "id": "sin",
+          "nombre": "Sin azúcar",
+          "extra": 0
+        },
+        {
+          "id": "stevia",
+          "nombre": "Stevia",
+          "extra": 0
+        },
+        {
+          "id": "miel",
+          "nombre": "Miel",
+          "extra": 0
+        }
+      ]
+    },
+    "extrasBebida": {
+      "nombre": "Extras",
+      "tipo": "varios",
+      "valores": [
+        {
+          "id": "shot",
+          "nombre": "Shot extra de espresso",
+          "extra": 12
+        },
+        {
+          "id": "prote",
+          "nombre": "Proteína en polvo",
+          "extra": 15
+        }
+      ]
+    },
+    "pan": {
+      "nombre": "Pan",
+      "tipo": "uno",
+      "valores": [
+        {
+          "id": "integral",
+          "nombre": "Integral",
+          "extra": 0
+        },
+        {
+          "id": "centeno",
+          "nombre": "Centeno",
+          "extra": 5
+        },
+        {
+          "id": "singluten",
+          "nombre": "Sin gluten",
+          "extra": 10
+        }
+      ]
+    },
+    "toppings": {
+      "nombre": "Toppings",
+      "tipo": "varios",
+      "valores": [
+        {
+          "id": "chia",
+          "nombre": "Chía",
+          "extra": 5
+        },
+        {
+          "id": "nuez",
+          "nombre": "Nuez",
+          "extra": 8
+        },
+        {
+          "id": "frutos",
+          "nombre": "Frutos rojos",
+          "extra": 10
+        }
+      ]
+    }
+  },
+  "productos": [
+    {
+      "id": "b1",
+      "categoria": "bebidas",
+      "nombre": "Americano",
+      "precio": 35,
+      "descripcion": "Espresso doble con agua caliente. Directo y con energía.",
+      "etiquetas": [
+        "Vegano"
+      ],
+      "opciones": [
+        "tamano",
+        "endulzante",
+        "extrasBebida"
+      ]
+    },
+    {
+      "id": "b2",
+      "categoria": "bebidas",
+      "nombre": "Latte",
+      "precio": 45,
+      "descripcion": "Espresso con leche vaporizada y arte latte.",
+      "etiquetas": [
+        "Favorito"
+      ],
+      "opciones": [
+        "tamano",
+        "leche",
+        "endulzante",
+        "extrasBebida"
+      ]
+    },
+    {
+      "id": "b3",
+      "categoria": "bebidas",
+      "nombre": "Capuchino",
+      "precio": 45,
+      "descripcion": "Espresso, leche y abundante espuma con canela.",
+      "etiquetas": [],
+      "opciones": [
+        "tamano",
+        "leche",
+        "endulzante",
+        "extrasBebida"
+      ]
+    },
+    {
+      "id": "b4",
+      "categoria": "bebidas",
+      "nombre": "Matcha latte",
+      "precio": 55,
+      "descripcion": "Té verde matcha ceremonial con leche. Enfoque sin bajón.",
+      "etiquetas": [
+        "Antioxidante"
+      ],
+      "opciones": [
+        "tamano",
+        "leche",
+        "endulzante"
+      ]
+    },
+    {
+      "id": "b5",
+      "categoria": "bebidas",
+      "nombre": "Cold brew",
+      "precio": 50,
+      "descripcion": "Café extraído en frío por 18 horas, servido con hielo.",
+      "etiquetas": [
+        "Frío"
+      ],
+      "opciones": [
+        "tamano",
+        "leche",
+        "endulzante",
+        "extrasBebida"
+      ]
+    },
+    {
+      "id": "b6",
+      "categoria": "bebidas",
+      "nombre": "Jugo verde",
+      "precio": 40,
+      "descripcion": "Nopal, piña, apio, pepino y naranja recién exprimidos.",
+      "etiquetas": [
+        "Vegano",
+        "Detox"
+      ],
+      "opciones": [
+        "tamano"
+      ]
+    },
+    {
+      "id": "b7",
+      "categoria": "bebidas",
+      "nombre": "Smoothie de frutos rojos",
+      "precio": 55,
+      "descripcion": "Fresa, zarzamora, plátano y yogurt griego.",
+      "etiquetas": [
+        "Proteína"
+      ],
+      "opciones": [
+        "tamano",
+        "extrasBebida"
+      ]
+    },
+    {
+      "id": "s1",
+      "categoria": "snacks",
+      "nombre": "Barra de granola",
+      "precio": 30,
+      "descripcion": "Avena, almendra, arándano y miel. Hecha en casa.",
+      "etiquetas": [
+        "Casero"
+      ],
+      "opciones": []
+    },
+    {
+      "id": "s2",
+      "categoria": "snacks",
+      "nombre": "Muffin integral de plátano",
+      "precio": 35,
+      "descripcion": "Harina integral, plátano maduro y nuez. Sin azúcar refinada.",
+      "etiquetas": [],
+      "opciones": []
+    },
+    {
+      "id": "s3",
+      "categoria": "snacks",
+      "nombre": "Yogurt con granola",
+      "precio": 45,
+      "descripcion": "Yogurt griego natural, granola y fruta de temporada.",
+      "etiquetas": [
+        "Proteína"
+      ],
+      "opciones": [
+        "toppings"
+      ]
+    },
+    {
+      "id": "s4",
+      "categoria": "snacks",
+      "nombre": "Mix de frutos secos",
+      "precio": 30,
+      "descripcion": "Almendra, nuez, pepita y arándano deshidratado.",
+      "etiquetas": [
+        "Vegano"
+      ],
+      "opciones": []
+    },
+    {
+      "id": "s5",
+      "categoria": "snacks",
+      "nombre": "Galletas de avena",
+      "precio": 25,
+      "descripcion": "Paquete de 3 galletas de avena con chispas de cacao.",
+      "etiquetas": [],
+      "opciones": []
+    },
+    {
+      "id": "d1",
+      "categoria": "desayunos",
+      "nombre": "Toast de aguacate y huevo",
+      "precio": 75,
+      "descripcion": "Pan integral, aguacate, huevo estrellado y semillas.",
+      "etiquetas": [
+        "Favorito"
+      ],
+      "opciones": [
+        "pan",
+        "toppings"
+      ]
+    },
+    {
+      "id": "d2",
+      "categoria": "desayunos",
+      "nombre": "Toast de plátano y fresa",
+      "precio": 65,
+      "descripcion": "Crema de cacahuate natural, plátano, fresa y coco rallado.",
+      "etiquetas": [
+        "Vegano"
+      ],
+      "opciones": [
+        "pan",
+        "toppings"
+      ]
+    },
+    {
+      "id": "d3",
+      "categoria": "desayunos",
+      "nombre": "Bowl de avena",
+      "precio": 60,
+      "descripcion": "Avena cocida con leche, canela, manzana y miel.",
+      "etiquetas": [],
+      "opciones": [
+        "leche",
+        "toppings"
+      ]
+    },
+    {
+      "id": "d4",
+      "categoria": "desayunos",
+      "nombre": "Bowl de quinoa",
+      "precio": 85,
+      "descripcion": "Quinoa, garbanzo, aguacate, jitomate cherry y vinagreta de limón.",
+      "etiquetas": [
+        "Vegano",
+        "Proteína"
+      ],
+      "opciones": []
+    },
+    {
+      "id": "d5",
+      "categoria": "desayunos",
+      "nombre": "Sándwich integral de pavo",
+      "precio": 70,
+      "descripcion": "Pechuga de pavo, panela, espinaca y jitomate.",
+      "etiquetas": [],
+      "opciones": [
+        "pan"
+      ]
+    },
+    {
+      "id": "d6",
+      "categoria": "desayunos",
+      "nombre": "Omelette de claras",
+      "precio": 80,
+      "descripcion": "Claras con espinaca y champiñón, acompañado de fruta.",
+      "etiquetas": [
+        "Proteína"
+      ],
+      "opciones": []
+    }
+  ]
+}
