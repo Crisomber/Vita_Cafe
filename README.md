@@ -1,6 +1,6 @@
 # Vita Café · sitio web (HTML + CSS + JS)
 
-**En línea:** https://crisomber.github.io/Vita_Cafe/
+**En línea:** https://vitacoffe.com (Cloudflare Workers, se publica solo con cada push a `main`)
 
 No usa base de datos. Para probarlo en tu compu ábrelo con un servidor local (por ejemplo, la extensión
 *Live Server* de VS Code o `python3 -m http.server`), porque el navegador no deja leer `menu.json` con doble clic.

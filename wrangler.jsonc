@@ -1,0 +1,10 @@
+// Configuración para Cloudflare Workers (sitio estático, sin código de servidor).
+// Cloudflare compila esto automáticamente en cada push a main.
+{
+  "name": "vita-cafe",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "single-page-application"
+  }
+}
