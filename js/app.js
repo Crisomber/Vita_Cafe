@@ -31,18 +31,33 @@
 
     // Resaltar el enlace de la sección visible
     const mapa = { bienvenida: "inicio", servicios: "inicio" };
+    if (!$('.nav-link[href^="#"]')) return;   // en menu.html el enlace activo ya viene marcado
     const links = $$(".nav-link");
     const io = new IntersectionObserver(entradas => {
       entradas.forEach(e => {
         if (!e.isIntersecting) return;
         const id = mapa[e.target.id] || e.target.id;
-        links.forEach(l => l.classList.toggle("is-active", l.getAttribute("href") === "#" + id));
+        const destino = id === "menu" ? "menu.html" : "#" + id;
+        links.forEach(l => l.classList.toggle("is-active", l.getAttribute("href") === destino));
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
     $$("main .section").forEach(s => io.observe(s));
   }
 
   /* =============== MENÚ =============== */
+  // En index.html: tarjetas que llevan a menu.html?cat=...
+  function renderVistaPrevia() {
+    const cont = $("#categorias-preview");
+    if (!cont) return;
+    cont.innerHTML = MENU.categorias.map((c, i) => `
+      <a class="category" href="menu.html?cat=${c.id}" data-anim="fade-up" data-delay="${i * 140}">
+        <span class="category__img"><img src="${c.imagen}" alt="" loading="lazy"></span>
+        <span class="category__name">${c.nombre} <small>· ${MENU.productos.filter(p => p.categoria === c.id).length} productos</small></span>
+      </a>`).join("");
+    window.VitaAnimations.observar(cont);
+  }
+
+  // En menu.html: pestañas que filtran los productos
   function renderCategorias() {
     $("#categorias").innerHTML = MENU.categorias.map((c, i) => `
       <button class="category ${c.id === categoriaActiva ? "is-active" : ""}" role="tab"
@@ -52,13 +67,14 @@
         <span class="category__name">${c.nombre}</span>
       </button>`).join("");
 
-    $$(".category").forEach(btn => btn.addEventListener("click", () => {
+    $$("#categorias .category").forEach(btn => btn.addEventListener("click", () => {
       categoriaActiva = btn.dataset.cat;
-      $$(".category").forEach(b => {
+      $$("#categorias .category").forEach(b => {
         const on = b === btn;
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-selected", on);
       });
+      history.replaceState(null, "", "?cat=" + categoriaActiva);
       renderProductos();
     }));
     window.VitaAnimations.observar($("#categorias"));
@@ -196,7 +212,7 @@
           <button data-inc="${esc(l.clave)}" aria-label="Agregar uno">+</button>
         </div>
       </div>`).join("")
-      : `<div class="empty"><img src="img/logo-icono.png" alt=""><p>Tu carrito está vacío.</p><a href="#menu" class="btn btn--small" data-close>Ver menú</a></div>`;
+      : `<div class="empty"><img src="img/logo-icono.png" alt=""><p>Tu carrito está vacío.</p><a href="menu.html" class="btn btn--small" data-close>Ver menú</a></div>`;
 
     $$("[data-inc]").forEach(b => b.onclick = () => { Store.updateQty(b.dataset.inc, 1); actualizarCarrito(); });
     $$("[data-dec]").forEach(b => b.onclick = () => { Store.updateQty(b.dataset.dec, -1); actualizarCarrito(); });
@@ -443,7 +459,9 @@
   }
 
   function errorMenu() {
-    $("#productos").innerHTML = `
+    const cont = $("#productos") || $("#categorias-preview");
+    if (!cont) return;
+    cont.innerHTML = `
       <div class="menu-error">
         <strong>No se pudo cargar el menú.</strong>
         <p>El menú vive en <code>data/menu.json</code> y el navegador no permite leerlo si abres
@@ -467,12 +485,16 @@
       return;
     }
     dinero = new Intl.NumberFormat("es-MX", { style: "currency", currency: MENU.moneda });
-    categoriaActiva = MENU.categorias[0].id;
+    const pedida = new URLSearchParams(location.search).get("cat");
+    categoriaActiva = MENU.categorias.some(c => c.id === pedida) ? pedida : MENU.categorias[0].id;
     const contador = $('[data-count="18"]');
     if (contador) contador.dataset.count = MENU.productos.length;
 
-    renderCategorias();
-    renderProductos();
+    renderVistaPrevia();
+    if ($("#productos")) {          // sólo en menu.html
+      renderCategorias();
+      renderProductos();
+    }
     actualizarCarrito();
   });
 })();

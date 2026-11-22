@@ -8,7 +8,8 @@ No usa base de datos. Para probarlo en tu compu ábrelo con un servidor local (p
 ## Estructura
 ```
 Vita_Cafe/
-├── index.html        Una sola página: Inicio · Menú · Conóceme · Contacto
+├── index.html        Página principal: Inicio · vista previa del menú · Conóceme · Contacto
+├── menu.html         Menú completo para ordenar (acepta ?cat=bebidas|snacks|desayunos)
 ├── css/styles.css    Estilos, paleta del diseño y animaciones
 ├── data/menu.json    Catálogo del menú en JSON (categorías, productos, precios, opciones)
 ├── img/              Imágenes extraídas y optimizadas del PDF

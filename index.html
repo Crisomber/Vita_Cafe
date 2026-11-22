@@ -25,7 +25,7 @@
 
     <nav class="navbar__menu" id="menu-principal" aria-label="Principal">
       <a href="#inicio" class="nav-link">Inicio</a>
-      <a href="#menu" class="nav-link">Nuestro menú</a>
+      <a href="menu.html" class="nav-link">Nuestro menú</a>
       <a href="#conoceme" class="nav-link">Conóceme</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
@@ -58,7 +58,7 @@
         <div class="hero__text" data-anim="fade-up" data-delay="300">
           <p class="hero__tagline">Energía natural para tu día universitario</p>
           <div class="hero__cta">
-            <a href="#menu" class="btn btn--primary">Ordenar ahora</a>
+            <a href="menu.html" class="btn btn--primary">Ordenar ahora</a>
             <a href="#conoceme" class="btn btn--ghost">Conóceme</a>
           </div>
         </div>
@@ -106,21 +106,19 @@
       </div>
     </section>
 
-    <!-- ============ MENÚ ============ -->
+    <!-- ============ MENÚ (vista previa: el menú completo está en menu.html) ============ -->
     <section id="menu" class="section menu">
       <div class="container">
         <div class="menu__head">
           <div class="block-green menu__title" data-anim="fade-right">
             <h2>Nuestro menú</h2>
           </div>
-          <p class="menu__intro" data-anim="fade-left">Elige una categoría, personaliza tu producto y agrégalo al carrito. Pasas a recoger sin hacer fila.</p>
+          <p class="menu__intro" data-anim="fade-left">Bebidas, snacks y desayunos integrales hechos al momento. Elige una categoría para ver el menú completo y ordenar.</p>
         </div>
-
-        <!-- Tarjetas de categoría (como en el diseño) que también filtran -->
-        <div class="categories" role="tablist" aria-label="Categorías del menú" id="categorias"></div>
-
-        <!-- Productos (se generan con JS desde data/menu.json) -->
-        <div class="products" id="productos" aria-live="polite"></div>
+        <div class="categories" id="categorias-preview"></div>
+        <div class="menu__cta" data-anim="fade-up">
+          <a href="menu.html" class="btn btn--primary">Ver menú completo y ordenar →</a>
+        </div>
       </div>
     </section>
 
@@ -176,10 +174,15 @@
           <ul class="contact__list" data-stagger>
             <li data-anim="fade-right"><span>Teléfono</span><a href="tel:1234567890">123-456-7890</a></li>
             <li data-anim="fade-right"><span>Correo</span><a href="mailto:vitacafeteria@gmail.com">vitacafeteria@gmail.com</a></li>
-            <li data-anim="fade-right"><span>Redes sociales</span>@vitacafeteria</li>
+            <li data-anim="fade-right"><span>Redes sociales</span>
+              <div class="socials">
+                <a href="https://www.instagram.com/vitacafeteriaa/" target="_blank" rel="noopener" class="social"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" class="fill"/></svg>@vitacafeteriaa</a>
+                <a href="https://www.facebook.com/share/18rD4MbPMP/" target="_blank" rel="noopener" class="social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5V7c0-.8.5-1.2 1.2-1.2H17V2.6h-2.4C11.9 2.6 11 4.4 11 6.8v1.7H8.6v3.3H11v9.6h3.5v-9.6h2.4l.4-3.3z"/></svg>Vita Café</a>
+              </div>
+            </li>
             <li data-anim="fade-right"><span>Horario</span>Lunes a viernes, 9:00 a 18:00 h</li>
           </ul>
-          <a href="#menu" class="btn btn--primary" data-anim="fade-up">Haz tu pedido</a>
+          <a href="menu.html" class="btn btn--primary" data-anim="fade-up">Haz tu pedido</a>
         </div>
       </div>
     </section>
@@ -187,6 +190,10 @@
 
   <footer class="footer">
     <p>© <span id="anio"></span> Vita Café · Proyecto escolar</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/vitacafeteriaa/" target="_blank" rel="noopener" aria-label="Instagram de Vita Café"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" class="fill"/></svg></a>
+      <a href="https://www.facebook.com/share/18rD4MbPMP/" target="_blank" rel="noopener" aria-label="Facebook de Vita Café"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5V7c0-.8.5-1.2 1.2-1.2H17V2.6h-2.4C11.9 2.6 11 4.4 11 6.8v1.7H8.6v3.3H11v9.6h3.5v-9.6h2.4l.4-3.3z"/></svg></a>
+    </div>
     <a href="#inicio" class="footer__top">Volver arriba ↑</a>
   </footer>
 
