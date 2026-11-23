@@ -353,7 +353,7 @@
                 <b>${fmt(l.precioUnitario * l.cantidad)}</b>
               </li>`).join("")}
           </ul>
-          <div class="tk__total"><span>Total</span><strong>${fmt(pedido.total)}</strong></div>
+          <div class="tk__total"><span>Total</span><div class="tk__stamp ${listo() ? "is-on" : ""}" aria-hidden="true">¡Listo!</div><strong>${fmt(pedido.total)}</strong></div>
 
           ${stepper(pedido)}
 
@@ -366,7 +366,6 @@
             <div><dt>piezas</dt><dd>${piezas}</dd></div>
           </dl>
 
-          <div class="tk__stamp ${listo() ? "is-on" : ""}" aria-hidden="true">¡Listo!</div>
         </div>
 
         <div class="tk__stub">
